@@ -19,10 +19,12 @@ namespace RunGroopWebApp.Controllers
             _signInManager = SignInManager;
             _userManager = UserManager;  
         }
+
+        [HttpGet]
         public IActionResult Login()
         {
-            var reponse = new LoginViewModel();
-            return View();
+            var response = new LoginViewModel();
+            return View(response);
         }
 
         [HttpPost]
@@ -56,6 +58,7 @@ namespace RunGroopWebApp.Controllers
             return View(loginViewModel);
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
             var response = new RegisterViewModel();
@@ -90,8 +93,7 @@ namespace RunGroopWebApp.Controllers
             return RedirectToAction("Index", "Race");
         }
 
-        [HttpPost]
-
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
